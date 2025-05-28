@@ -1,0 +1,42 @@
+[
+    {
+        "construct_type": "function_definition",
+        "code": "int gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}",
+        "explanation": "This C code implements the Euclidean algorithm to find the greatest common divisor (GCD) of two integers `a` and `b`.\n\n**Functionality:**\n\nIt recursively computes the GCD.  The base case is when `b` is 0, at which point `a` is the GCD. Otherwise, it recursively calls itself with `b` and the remainder of `a` divided by `b` (`a % b`).  This process continues until the remainder is 0."
+    },
+    {
+        "construct_type": "function_definition",
+        "code": "int main()\n{\n    int x = 48, y = 18;\n    int result = gcd(x, y);\n    printf(\"GCD of %d and %d is %d\\n\", x, y, result);\n    return 0;\n}",
+        "explanation": "This C code calculates and prints the greatest common divisor (GCD) of two integers, `x` (48) and `y` (18).\n\nIt initializes `x` and `y`, calls a function `gcd(x, y)` (which is assumed to be defined elsewhere and computes the GCD), and then prints the result using `printf`.  The `return 0;` indicates successful program execution.  The code implicitly relies on an external `gcd` function; the code itself doesn't contain the GCD algorithm."
+    },
+    {
+        "construct_type": "variable_declaration",
+        "code": "int x = 48, y = 18;",
+        "explanation": "This C code snippet declares and initializes two integer variables.\n\n* `int x = 48;` declares an integer variable named `x` and assigns it the value 48.\n* `int y = 18;` declares an integer variable named `y` and assigns it the value 18.\n\nIn essence, it sets up two integer variables with specific initial values, ready for use in the rest of the program."
+    },
+    {
+        "construct_type": "variable_declaration",
+        "code": "int result = gcd(x, y);",
+        "explanation": "This C code snippet calculates the greatest common divisor (GCD) of two integers, `x` and `y`, and stores the result in the integer variable `result`.  The function `gcd()` (not shown in the snippet) is assumed to be a pre-existing function that performs the GCD calculation, likely using an algorithm like Euclid's algorithm."
+    },
+    {
+        "construct_type": "return_statement",
+        "code": "return a;",
+        "explanation": "The C code `return a;` terminates the currently executing function and returns the value of the variable `a` to the calling function.  The type of `a` must be compatible with the declared return type of the function."
+    },
+    {
+        "construct_type": "return_statement",
+        "code": "return gcd(b, a % b);",
+        "explanation": "This C code snippet implements a recursive step in the Euclidean algorithm for finding the greatest common divisor (GCD) of two integers `a` and `b`.\n\nIt recursively calls the `gcd` function, passing `b` as the first argument and the remainder of `a` divided by `b` (`a % b`) as the second.  The algorithm continues until the remainder is 0, at which point the GCD is the last non-zero remainder."
+    },
+    {
+        "construct_type": "return_statement",
+        "code": "return 0;",
+        "explanation": "In C, `return 0;` is a statement used to terminate the execution of a function and return a value of 0 to the caller.  The value 0 conventionally signifies successful execution of the function.  If the function is the `main` function, returning 0 indicates successful program termination to the operating system."
+    },
+    {
+        "construct_type": "if_statement",
+        "code": "if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}",
+        "explanation": "This C code snippet implements the Euclidean algorithm for finding the greatest common divisor (GCD) of two non-negative integers `a` and `b`.\n\n* **`if (b == 0) return a;`**: This is the base case of the recursion.  When `b` reaches 0, the GCD is `a`.\n\n* **`return gcd(b, a % b);`**: This is the recursive step. It recursively calls the `gcd` function with `b` as the new `a` and the remainder of `a` divided by `b` (`a % b`) as the new `b`.  This continues until the remainder is 0, at which point the base case is reached.\n\nIn essence, the code efficiently computes the GCD by repeatedly applying the modulo operation until a remainder of 0 is obtained."
+    }
+]

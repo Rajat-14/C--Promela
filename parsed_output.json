@@ -1,0 +1,70 @@
+[
+    {
+        "c_construct_type": "function_definition",
+        "c_code": "int gcd(int a, int b)\n{\n    if (b == 0)\n        return a;\n    return gcd(b, a % b);\n}",
+        "suggested_promela_rules": [
+            "proctype gcd(a, b) { ... }",
+            "if :: (b == 0) -> return a :: else -> gcd(b, a % b) fi"
+        ],
+        "explanation": "A C function is modeled as a Promela proctype. The if statement within the function is represented using the Promela if statement with guards."
+    },
+    {
+        "c_construct_type": "function_definition",
+        "c_code": "int main()\n{\n    int x = 48, y = 18;\n    int result = gcd(x, y);\n    printf(\"GCD of %d and %d is %d\\n\", x, y, result);\n    return 0;\n}",
+        "suggested_promela_rules": [
+            "proctype main() { ... }",
+            "int x = 48; int y = 18;",
+            "result = gcd(x, y);",
+            "printf(\"GCD of %d and %d is %d\\n\", x, y, result);"
+        ],
+        "explanation": "The main function is modeled as a Promela proctype. Variable declarations and assignments are directly translated. The printf statement is mapped to a Promela printf."
+    },
+    {
+        "c_construct_type": "variable_declaration",
+        "c_code": "int x = 48, y = 18;",
+        "suggested_promela_rules": [
+            "int x = 48; int y = 18;"
+        ],
+        "explanation": "Direct translation of C variable declarations to Promela variable declarations."
+    },
+    {
+        "c_construct_type": "variable_declaration",
+        "c_code": "int result = gcd(x, y);",
+        "suggested_promela_rules": [
+            "int result = gcd(x, y);"
+        ],
+        "explanation": "Direct translation of C variable declarations and assignments to Promela."
+    },
+    {
+        "c_construct_type": "return_statement",
+        "c_code": "return a;",
+        "suggested_promela_rules": [
+            "return a;"
+        ],
+        "explanation": "Direct translation of C return statement to Promela return statement."
+    },
+    {
+        "c_construct_type": "return_statement",
+        "c_code": "return gcd(b, a % b);",
+        "suggested_promela_rules": [
+            "return gcd(b, a % b);"
+        ],
+        "explanation": "Direct translation of C return statement to Promela return statement."
+    },
+    {
+        "c_construct_type": "return_statement",
+        "c_code": "return 0;",
+        "suggested_promela_rules": [
+            "return 0;"
+        ],
+        "explanation": "Direct translation of C return statement to Promela return statement."
+    },
+    {
+        "c_construct_type": "if_statement",
+        "c_code": "if (b == 0)\n        return a;\n    return gcd(b, a % b);",
+        "suggested_promela_rules": [
+            "if :: (b == 0) -> return a :: else -> return gcd(b, a % b) fi"
+        ],
+        "explanation": "The C if-else statement is mapped to a Promela if statement. Each branch is represented by a guarded statement."
+    }
+]
